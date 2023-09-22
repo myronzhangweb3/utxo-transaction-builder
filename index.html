@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UTXO Transaction Builder</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/bitcoinjs-lib-4.0.2.min.js"></script>
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .next-line {
+            margin-top: 50px;
+        }
+
+        .width-50 {
+            width: 50%;
+        }
+
+        .width-80 {
+            width: 58%;
+        }
+
+        .width-100 {
+            width: 108%;
+        }
+
+        .max-width-button {
+            width: 100%;
+            margin: 0 20% 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="center">UTXO Transaction Builder</h1>
+        <div>
+            <hr>
+            <h2 class="center">Generate Key</p1>
+        </div>
+        <div class="form-group">
+            <label for="generatedPrivateKey">Generated Private Key(Hex):</label>
+            <input type="text" class="form-control" id="generatedPrivateKey" name="generatedPrivateKey" readonly>
+        </div>
+        <div class="center">
+            <button id="generatePrivateKey" class="btn btn-primary max-width-button">Generate Private Key</button>
+        </div>
+
+        <div class="next-line">
+            <hr>
+            <h2 class="center">Calculate Address</p1>
+        </div>
+        <form id="transactionForm">
+            <div class="form-group">
+                <label for="privateKey">Private Key(Hex):</label>
+                <input type="text" class="form-control" id="privateKey" name="privateKey">
+            </div>
+            <div class="form-group">
+                <label for="addressPrefix">Address Prefix ID:</label>
+                <input type="text" class="form-control" id="addressPrefix" name="addressPrefix">
+            </div>
+            <div class="form-group">
+                <label for="generatedAddress">Address:</label>
+                <input type="text" class="form-control" id="generatedAddress" name="generatedAddress" readonly>
+            </div>
+            <div class="center">
+                <button id="generateAddress" class="btn btn-primary max-width-button">Calculates Address</button>
+            </div>
+
+            <div class="next-line">
+                <hr>
+                <h2 class="center">Build transaction</p1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div id="vins">
+                            <h3>VINs</h3>
+                            <div class="vin">
+                                <div class="form-group">
+                                    <label for="vinTxHash">Transaction Hash:</label>
+                                    <input type="text" class="form-control" id="vinTxHash" name="vinTxHash">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vinTxIndex">Transaction Index:</label>
+                                    <input type="text" class="form-control" id="vinTxIndex" name="vinTxIndex">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button type="button" class="btn btn-primary max-width-button" id="addVin">Add VIN</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="vouts">
+                            <h3>VOUTs</h3>
+                            <div class="vout">
+                                <div class="form-group">
+                                    <label for="voutAddress">To Address:</label>
+                                    <input type="text" class="form-control" id="voutAddress" name="voutAddress">
+                                </div>
+                                <div class="form-group">
+                                    <label for="voutAmount">Amount(Satoshi):</label>
+                                    <input type="text" class="form-control" id="voutAmount" name="voutAmount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button type="button" class="btn btn-primary max-width-button" id="addVout">Add VOUT</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="center">
+                    <br>
+                    <button type="button" class="btn btn-success max-width-button" id="signTransaction">Sign Transaction</button>
+                </div>
+            </div>
+            
+
+            <div class="next-line">
+                <hr>
+                <h2 class="center">Broadcast transaction(Unimplemented)</p1>
+            </div>
+            <div class="form-group">
+                <label for="nodeUrl">RawData:</label>
+                <textarea type="text" class="form-control" id="rawData" name="rawData" style="height: 200px;"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="nodeUrl">BTC Node URL:</label>
+                <input type="text" class="form-control" id="nodeUrl" name="nodeUrl">
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="center">
+                <button type="button" class="btn btn-warning max-width-button" id="broadcastTransaction">Broadcast Transaction</button>
+            </div>
+        </form>
+    </div>
+
+    <br><br>
+
+    <script src="./js/btc_transaction.js"></script>
+</body>
+
+</html>
