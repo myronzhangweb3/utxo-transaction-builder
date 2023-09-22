@@ -25,7 +25,7 @@ $(function () {
                     <input type="text" class="form-control" id="voutAddress" name="voutAddress">
                 </div>
                 <div class="form-group">
-                    <label for="voutAmount">Amount:</label>
+                    <label for="voutAmount">Amount(Satoshi):</label>
                     <input type="text" class="form-control" id="voutAmount" name="voutAmount">
                 </div>
             </div>
@@ -90,7 +90,7 @@ $(function () {
             const txHex = tx.toHex();
 
             // Display the transaction hex
-            console.log(txHex);
+            alert("Please copy the raw transaction hex on broadcast page and broadcast it.");
             $('#rawData').val(txHex);
         } catch (e) {
             alert(e);
@@ -100,6 +100,7 @@ $(function () {
     // Broadcast transaction
     $('#broadcastTransaction').click(function () {
         // TODO: Broadcast transaction using bitcoinjs-lib
+        alert("Not implemented yet.")
     });
 });
 
